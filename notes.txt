@@ -1,0 +1,23 @@
+Start the server
+===================
+uvicorn main:app --reload
+
+==================================
+Open your browser and go to:
+👉 http://127.0.0.1:8000
+
+Automatic Swagger Docs (interactive):
+👉 http://127.0.0.1:8000/docs
+
+from pydantic import BaseModel
+
+class Item(BaseModel):
+    name: str
+    price: float
+    in_stock: bool = True
+
+@app.post("/items/")
+def create_item(item: Item):
+    return {"item": item}
+==========================
+curl http://127.0.0.1:8000/
